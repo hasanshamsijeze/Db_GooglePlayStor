@@ -50,7 +50,6 @@ class AppModel(BaseModel):
     editors_choice: bool
 class CategoryModel(BaseModel):
     category_name: str
-
 class DeveloperModel(BaseModel):
     developer_id: str
     developer_website: str

@@ -26,7 +26,7 @@ def fetch_average_ratings():
 # تابع برای ارسال درخواست به API و دریافت داده‌ها
 def fetch_apps(category_id=None, min_rating=None, max_rating=None, min_price=None, max_price=None,limit=1000):
     params = {
-        "category_id": category_id,
+        "category_name": category_id,
         "min_rating": min_rating,
         "max_rating": max_rating,
         "min_price": min_price,
