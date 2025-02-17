@@ -12,7 +12,7 @@ CREATE TABLE Apps (
     Currency TEXT,
     Size TEXT,
     MinAndroid TEXT,
-    DeveloperId INT NOT NULL,
+    DeveloperId TEXT NOT NULL,
     Released DATE,
     LastUpdated DATE,
     ContentRating TEXT,
@@ -28,8 +28,17 @@ CREATE TABLE Categories (
 );
 
 CREATE TABLE Developers (
-    DeveloperId SERIAL PRIMARY KEY,
-    DeveloperName TEXT UNIQUE NOT NULL,
+    DeveloperId TEXT PRIMARY KEY UNIQUE NOT NULL,
     DeveloperWebsite TEXT,
     DeveloperEmail TEXT
 );
+
+ALTER TABLE Apps 
+ADD CONSTRAINT CategoryId FOREIGN KEY (CategoryId) REFERENCES Categories(CategoryId);
+
+ALTER TABLE Apps 
+ADD CONSTRAINT DeveloperId FOREIGN KEY (DeveloperId) REFERENCES Developers(DeveloperId);
+
+CREATE INDEX idx_CategoryId ON Apps(CategoryId);
+CREATE INDEX idx_FreeApps ON Apps(Free);
+CREATE INDEX idx_free_social_category ON Apps(CategoryId, Free, AppId, AppName);
